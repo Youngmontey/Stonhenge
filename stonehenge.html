@@ -1,0 +1,232 @@
+<div id="overlay">
+	<button id="startButton">Play</button>
+</div>
+<audio id="song" preload="auto" style="display: none">
+	<source src="sounds/358232_j_s_song.ogg" type="audio/ogg">
+	<source src="sounds/358232_j_s_song.mp3" type="audio/mpeg">
+</audio>
+<audio id="skullbeatz" preload="auto" style="display: none">
+	<source src="sounds/376737_Skullbeatz___Bad_Cat_Maste.ogg" type="audio/ogg">
+	<source src="sounds/376737_Skullbeatz___Bad_Cat_Maste.mp3" type="audio/mpeg">
+</audio>
+<audio id="utopia" loop preload="auto" style="display: none">
+	<source src="sounds/Project_Utopia.ogg" type="audio/ogg">
+	<source src="sounds/Project_Utopia.mp3" type="audio/mpeg">
+</audio>
+
+<script type="module">
+
+@@ -127,6 +139,12 @@
+		ground.receiveShadow = true;
+		scene.add(ground);
+
+		const sound4 = new THREE.Audio( listener );
+		const utopiaElement = document.getElementById( 'utopia' );
+		sound4.setMediaElementSource( utopiaElement );
+		sound4.setVolume( 0.5 );
+		utopiaElement.play();
+
+
+
+
+		var distanceX = 300;
+		var distanceZ = -800 ;
+		var rotation = -0.35;
+		for(let i = 0 ; i< 4 ; i++){
+			 var stone2  = new THREE.Mesh(geometry, material);
+			 stone2.position.z = distanceZ ;
+			 stone2.position.x = distanceX ;
+			 stone2.rotation.y = rotation
+				 stone2.receiveShadow= true;
+				 stone2.castShadow = true;
+			  scene.add(stone2);
+			  distanceX += 300
+			  distanceZ += 200
+			  rotation -= 0.35 ;
+		}
+		var x = 400 ;
+		var z = -800 ;
+		var y = -0.35
+		for(let i = 0 ; i< 3 ; i++){
+			 var bar  = new THREE.Mesh(geometry2, material);
+			 bar.position.x = x ;
+			 bar.position.z = z ;
+			 bar.position.y = 150;
+			 bar.rotation.y = y
+			 bar.receiveShadow= true;
+			 bar.castShadow = true;
+				  scene.add(bar) ;
+				x += 300
+			  z += 200
+			  y -= 0.35
+		}
+		var distanceX = 1200;
+		var distanceZ = 200 ;
+		var rotation = -1.7
+		for(let i = 0 ; i< 4 ; i++){
+			 var stone2  = new THREE.Mesh(geometry, material);
+			 stone2.position.z = distanceZ ;
+			 stone2.position.x = distanceX ;
+			 stone2.rotation.y = rotation
+				 stone2.receiveShadow= true;
+				 stone2.castShadow = true;
+			  scene.add(stone2);
+			  distanceX -= 300
+			  distanceZ += 200
+			  rotation -= 0.35 ;
+		}
+		var x = 1000;
+		var z = 400 ;
+		var y = -2.2
+		for(let i = 0 ; i< 3 ; i++){
+			 var bar  = new THREE.Mesh(geometry2, material);
+			 bar.position.x = x ;
+			 bar.position.z = z ;
+			 bar.position.y = 150;
+			 bar.rotation.y = y
+				  scene.add(bar) ;
+			  x -= 300
+			  z += 200
+			  y -= 0.3
+		}
+		var distanceX = -300;
+		var distanceZ = -1000 ;
+		var rotation = 0.35
+		for(let i = 0 ; i< 4 ; i++){
+			 var stone2  = new THREE.Mesh(geometry, material);
+			 stone2.position.z = distanceZ ;
+			 stone2.position.x = distanceX ;
+			 stone2.rotation.y = rotation
+				 stone2.receiveShadow= true;
+				 stone2.castShadow = true;
+			  scene.add(stone2);
+			  distanceX -= 300
+			  distanceZ += 200
+			  rotation += 0.35 ;
+		}
+		var x = -500;
+		var z = -900 ;
+		var y = 0.35
+		for(let i = 0 ; i< 3 ; i++){
+			 var bar  = new THREE.Mesh(geometry2, material);
+			 bar.position.x = x ;
+			 bar.position.z = z ;
+			 bar.position.y = 150;
+			 bar.rotation.y = y
+			 bar.receiveShadow= true;
+			 bar.castShadow = true;
+				  scene.add(bar) ;
+			  x -= 300
+			  z += 200
+			  y += 0.3
+		}
+		var distanceX = -300;
+		var distanceZ = 800 ;
+		var rotation = -0.35
+		for(let i = 0 ; i< 4 ; i++){
+			 var stone2  = new THREE.Mesh(geometry, material);
+			 stone2.position.z = distanceZ ;
+			 stone2.position.x = distanceX ;
+			 stone2.rotation.y = rotation
+				 stone2.receiveShadow= true;
+				 stone2.castShadow = true;
+			  scene.add(stone2);
+			  distanceX -= 300
+			  distanceZ -= 200
+			  rotation -= 0.35 ;
+		}
+			var x = -400;
+		var z = 800 ;
+		var y = -0.3
+		for(let i = 0 ; i< 3 ; i++){
+			 var bar  = new THREE.Mesh(geometry2, material);
+			 bar.position.x = x ;
+			 bar.position.z = z ;
+			 bar.position.y = 150;
+			 bar.rotation.y = y
+			 bar.receiveShadow= true;
+			 bar.castShadow = true;
+				  scene.add(bar) ;
+			  x -= 300
+			  z -= 200
+			  y -= 0.2
+		}
+		// creation d'un objet en animation
+		const loader = new FBXLoader();
+		loader.load('models/fbx/Breakdance Uprock Var 2.fbx', function (object) {
+	object.position.set(0 , -150, 400); //MODIFIER LA POSITION DE L'OBJET
+	mixer = new THREE.AnimationMixer(object);
+	const action = mixer.clipAction(object.animations[0]);
+	action.play();
+	object.traverse(function (child) {
+	  if (child.isMesh) {
+		child.castShadow = true;
+		child.receiveShadow = true;
+	  }
+	});
+	scene.add(object);
+  });
+		//stat en FPS
+		 stats = new Stats();
+		 document.body.appendChild(stats.dom);
+		window.addEventListener( 'resize', onWindowResize );
+	}
+	function onWindowResize() {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+	function animate() {
+		requestAnimationFrame( animate );
+	lightHelper.update();
+		shadowCameraHelper.update();
+		const delta = clock.getDelta(); //Mettre à jour l'état de l'objet à chaque image
+		if ( mixer ) mixer.update( delta );
+		renderer.render( scene, camera );
+		stats.update();
+	}
+	function buildGui() {
+		gui = new GUI();
+		const params = {
+			'light color': spotLight.color.getHex(),
+			intensity: spotLight.intensity,
+			distance: spotLight.distance,
+			angle: spotLight.angle,
+			penumbra: spotLight.penumbra,
+			decay: spotLight.decay,
+			focus: spotLight.shadow.focus
+		};
+		gui.addColor( params, 'light color' ).onChange( function ( val ) {
+			spotLight.color.setHex( val );
+			animate();
+		} );
+		gui.add( params, 'intensity', 0, 2 ).onChange( function ( val ) {
+			spotLight.intensity = val;
+			animate();
+		} );
+		gui.add( params, 'distance', 50, 200 ).onChange( function ( val ) {
+			spotLight.distance = val;
+			animate();
+		} );
+		gui.add( params, 'angle', 0, Math.PI / 3 ).onChange( function ( val ) {
+			spotLight.angle = val;
+			animate();
+		} );
+		gui.add( params, 'penumbra', 0, 1 ).onChange( function ( val ) {
+			spotLight.penumbra = val;
+			animate();
+		} );
+		gui.add( params, 'decay', 1, 2 ).onChange( function ( val ) {
+			spotLight.decay = val;
+			animate();
+		} );
+		gui.add( params, 'focus', 0, 1 ).onChange( function ( val ) {
+			spotLight.shadow.focus = val;
+			animate();
+		} );
+		gui.open();
+}
+buildGui();
+</script>
+</body>
+</html>
