@@ -10,6 +10,18 @@
 		<div id="overlay">
 			<button id="startButton">Play</button>
 		</div>
+		<audio id="song" preload="auto" style="display: none">
+			<source src="sounds/358232_j_s_song.ogg" type="audio/ogg">
+			<source src="sounds/358232_j_s_song.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="skullbeatz" preload="auto" style="display: none">
+			<source src="sounds/376737_Skullbeatz___Bad_Cat_Maste.ogg" type="audio/ogg">
+			<source src="sounds/376737_Skullbeatz___Bad_Cat_Maste.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="utopia" loop preload="auto" style="display: none">
+			<source src="sounds/Project_Utopia.ogg" type="audio/ogg">
+			<source src="sounds/Project_Utopia.mp3" type="audio/mpeg">
+		</audio>
 
 		<script type="module">
 
@@ -126,6 +138,12 @@
 				ground.position.y = -150;
 				ground.receiveShadow = true;
 				scene.add(ground);
+
+				const sound4 = new THREE.Audio( listener );
+				const utopiaElement = document.getElementById( 'utopia' );
+				sound4.setMediaElementSource( utopiaElement );
+				sound4.setVolume( 0.5 );
+				utopiaElement.play();
 
 
 
